@@ -13,6 +13,7 @@ import Login from "../Authentication/Login";
 import MyProfile from "../Components/MyProfile";
 import Privateroute from "../private/Privateroute";
 import AddRoommateForm from "../Pages/CURD/AddRoommateForm";
+import Details from "../Components/Details";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,13 @@ export const router = createBrowserRouter([
             (<Privateroute>
                 <MyProfile></MyProfile>
             </Privateroute>)
+
+    },
+    {
+        path: '/roommates/:id',
+        loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
+        element:
+            <Details></Details>
 
     },
 
