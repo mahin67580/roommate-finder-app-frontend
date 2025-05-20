@@ -60,8 +60,10 @@ export const router = createBrowserRouter([
     {
         path: '/roommates/:id',
         loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
-        element:
+        element: (<Privateroute>
             <Details></Details>
+        </Privateroute>)
+
 
     },
 
