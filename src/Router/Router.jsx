@@ -5,13 +5,14 @@ import {
 } from "react-router";
 import MainLayout from "../Root/MainLayout";
 import Home from "../Pages/Home";
-import AddtoFindRoommate from "../Pages/AddtoFindRoommate";
+
 import BrowseListing from "../Pages/BrowseListing";
 import MyListings from "../Pages/MyListings";
 import Register from "../Authentication/Register";
 import Login from "../Authentication/Login";
 import MyProfile from "../Components/MyProfile";
 import Privateroute from "../private/Privateroute";
+import AddRoommateForm from "../Pages/CURD/AddRoommateForm";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/AddToFindRoommate',
-                element: <AddtoFindRoommate></AddtoFindRoommate>
+                element: (<Privateroute>
+                    <AddRoommateForm></AddRoommateForm>
+                </Privateroute>)
             },
             {
                 path: '/BrowseListing',

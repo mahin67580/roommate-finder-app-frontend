@@ -17,7 +17,7 @@ const MainLayout = () => {
             <header className='sticky top-0 z-50  '>
                 <Navbar></Navbar>
             </header>
-            <main>
+            <main className='p-5'>
                 <Outlet></Outlet>
             </main>
             <footer>

@@ -10,7 +10,7 @@ const Home = () => {
             <div>
                 <Banner></Banner>
             </div>
-            <div className=' absolute top-[75px] left-[35px] lg:top-[500px] lg:left-[160px] w-10/12 '>
+            <div className=' absolute top-[90px] left-[42px] lg:top-[500px] lg:left-[160px] w-9/12 '>
                 <BannerText></BannerText>
             </div>
             <div className=' '>

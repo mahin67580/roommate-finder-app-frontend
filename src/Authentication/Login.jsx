@@ -46,7 +46,7 @@ const Login = () => {
                 //(error as param)
                 // const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                alert(errorMessage);
 
             });
 
@@ -94,7 +94,7 @@ const Login = () => {
                             </svg> Login With Google</button>
 
 
-                            <p className='mt-3 text-center'>Don't Have an account?<Link className='text-green-800' to={'/register'}> Register now!</Link></p>
+                            <p className='mt-3 text-center'>Don't Have an account?<Link className='text-green-800 text-xl font-bold ' to={'/register'}> Register now!</Link></p>
                         </fieldset>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ const Register = () => {
 
     const provider = new GoogleAuthProvider();
 
-    const { createUser, setUser, updateUser } = use(AuthContext)
+    const { createUser, setUser, updateUser} = use(AuthContext)
     const [nameError, setNameError] = useState('')
     const [passError, setPassError] = useState('')
     const navigate = useNavigate()
@@ -52,8 +52,10 @@ const Register = () => {
                 console.log(user);
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
+                         navigate('/')
                         setUser({ ...user, displayName: name, photoURL: photo });
-                        navigate('/')
+                          
+                       
                     }).catch((error) => {
                         console.log(error);
 
@@ -118,7 +120,7 @@ const Register = () => {
 
                             <button type='submit' className="btn btn-neutral mt-4">Register</button>
 
-                            <p className='mt-3 text-center'>Already Have an account?<Link className='text-green-800 font-bold' to={'/login'}> Login now!</Link></p>
+                            <p className='mt-3 text-center'>Already Have an account?<Link className='text-green-800 text-xl font-bold' to={'/login'}> Login now!</Link></p>
 
                             <p className='text-center font-semibold'>or</p>
 

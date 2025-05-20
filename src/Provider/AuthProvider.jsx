@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
 
     const createUser = (email, password) => {
         alert('Register succesfull')
-        setLoading(true)
+         setLoading(true)
 
         return createUserWithEmailAndPassword(auth, email, password)
 
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const login = (email, password) => {
-        setLoading(true)
+        
         return signInWithEmailAndPassword(auth, email, password)
     }
 

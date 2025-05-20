@@ -25,18 +25,18 @@ const Navbar = () => {
 
 
     const Links = <>
-        <NavLink to={'/'} className={'mr-5 font-semibold'}>Home</NavLink>
-        <NavLink to={'/AddToFindRoommate'} className={'mr-5 font-semibold'}>Add to Find Roommate</NavLink>
-        <NavLink to={'/BrowseListing'} className={'mr-5 font-semibold'}>Browse Listing</NavLink>
-        <NavLink to={'/MyListings'} className={'mr-5 font-semibold'}>My Listings</NavLink>
+        <NavLink to={'/'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  '}>Home</NavLink>
+        <NavLink to={'/AddToFindRoommate'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Add to Find Roommate</NavLink>
+        <NavLink to={'/BrowseListing'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Browse Listing</NavLink>
+        <NavLink to={'/MyListings'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>My Listings</NavLink>
         {
-            user ? (<NavLink to={'/myprofile'} className=" font-semibold  "> My profile </NavLink  >) : ''
+            user ? (<NavLink to={'/myprofile'} className=" font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  "> My profile </NavLink  >) : ''
         }
     </>
 
 
 
-
+  
 
     return (
         <div>
