@@ -1,9 +1,10 @@
- 
+
 import React, { use, useEffect } from 'react';
 import { AuthContext } from '../Provider/AuthContext';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
 import { Link, useLocation, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -38,7 +39,14 @@ const Login = () => {
 
                 navigate(`${location.state ? location.state : '/'}`)
 
-                alert(`'login done'${user.email}`)
+                //  alert(`'login done'${user.email}`)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `"Logged in successful",welcome ${user.email}`,
+                    showConfirmButton: false,
+                    timer: 1000
+                });
 
                 form.reset();
             })
@@ -46,7 +54,13 @@ const Login = () => {
                 //(error as param)
                 // const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorMessage);
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text:` ${ errorMessage }`,
+                   
+                });
 
             });
 
@@ -57,7 +71,14 @@ const Login = () => {
 
         signInWithPopup(auth, provider).then(() => {
             navigate(`${location.state ? location.state : '/'}`)
-             alert("Login successful! welcome ");
+            //alert("Login successful! welcome ");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Logged in successful",
+                showConfirmButton: false,
+                timer: 1000
+            });
         }).catch(error => {
             console.log(error);
 

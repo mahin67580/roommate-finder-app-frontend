@@ -4,6 +4,7 @@ import navlogo from '../assets/Animation - 1746735500248 (1).gif'
 import usericon from '../assets/profile.png'
 import { AuthContext } from '../Provider/AuthContext';
 import { use } from 'react';
+import Swal from 'sweetalert2';
 const Navbar = () => {
 
 
@@ -15,7 +16,15 @@ const Navbar = () => {
 
         logout()
             .then(() => {
-                alert('Action completed successfully!');
+              
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logout  successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
             }).catch(() => {
                 // console.log(error);
             });
@@ -36,7 +45,7 @@ const Navbar = () => {
 
 
 
-  
+
 
     return (
         <div>
