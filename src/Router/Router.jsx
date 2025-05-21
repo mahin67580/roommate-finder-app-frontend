@@ -38,7 +38,9 @@ export const router = createBrowserRouter([
             {
                 path: '/MyListings',
                 loader: () => fetch("http://localhost:3000/roommates"),
-                element: <MyListings></MyListings>
+                element: (<Privateroute>
+                    <MyListings></MyListings>
+                </Privateroute>)
             },
             {
                 path: "/register",

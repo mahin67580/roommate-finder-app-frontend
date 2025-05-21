@@ -8,7 +8,7 @@ const MyListingscard = ({ useraddedpost }) => {
             <td className="py-2 px-4">{title}</td>
             <td className="py-2 px-4">{location}</td>
             <td className="py-2 px-4">৳{rent}</td>
-            <td className="py-2 px-4">
+            <td className="py-2 px-4 flex justify-center items-center">
                 <button
                     // onClick={handleUpdate}
                     className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2"
