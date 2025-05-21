@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
 
 export default function AddRoommateForm() {
@@ -6,6 +6,8 @@ export default function AddRoommateForm() {
 
     const { user } = use(AuthContext)
     // console.log(user.email);
+
+
 
     const [formData, setFormData] = useState({
         title: "",
@@ -16,9 +18,14 @@ export default function AddRoommateForm() {
         description: "",
         contact: "",
         availability: "available",
-        // email: "",
+        email: "",
         // name: "",
     });
+    useEffect(() => {
+        if (user) {
+            setFormData((prev) => ({ ...prev, email: user.email }));
+        }
+    }, [user]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,7 +35,7 @@ export default function AddRoommateForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted data:", formData);
-        // Add your logic to send this to your backend or Firebase
+        
 
         fetch("http://localhost:3000/roommates ", {
             method: "POST",
@@ -148,10 +155,9 @@ export default function AddRoommateForm() {
                 name="email"
                 type="email"
                 placeholder="Your Email"
-                value={user ? `${user.email} ` : ""}
-                disabled
-                className="w-full border p-3 rounded"
-                required
+                value={formData.email}
+                readOnly
+                className="w-full border p-3 rounded bg-gray-100"
             />
 
             <input
@@ -159,9 +165,9 @@ export default function AddRoommateForm() {
                 type="text"
                 placeholder="Your Name"
                 value={user ? `${user.displayName} ` : ""}
-                disabled
+                readOnly
                 className="w-full border p-3 rounded"
-                required
+
             />
 
             <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">

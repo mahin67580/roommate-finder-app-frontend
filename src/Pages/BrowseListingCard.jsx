@@ -11,7 +11,7 @@ const BrowseListingCard = ({ post }) => {
             <td className="py-3 px-4 border border-gray-300">
                 <Link
                     to={`/roommates/${_id}`}
-                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                    className="bg-blue-600 btn text-white px-3 py-1 rounded hover:bg-blue-700 transition"
                 >
                     See More
                 </Link>

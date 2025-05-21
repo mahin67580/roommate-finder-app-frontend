@@ -6,7 +6,7 @@ import Footer from './Footer';
 const Details = () => {
     const post = useLoaderData()
     console.log(post);
-    const { _id, title, rent, location, availability, contact, description, lifestyle, roomType } = post;
+    const { _id, title, rent, location, availability, contact, description, lifestyle, roomType,email } = post;
     return (
         <div>
             <Navbar></Navbar>
@@ -19,6 +19,7 @@ const Details = () => {
                 <p className="text-gray-600 mb-4"><strong>description:</strong> {description}</p>
                 <p className="text-gray-600 mb-4"><strong>lifestyle:</strong> {lifestyle}</p>
                 <p className="text-gray-600 mb-4"><strong>roomType:</strong> {roomType}</p>
+                <p className="text-gray-600 mb-4"><strong>email:</strong> {email}</p>
                 <button className="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Like</button>
             </div>
             <Footer></Footer>
