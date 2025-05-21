@@ -25,12 +25,12 @@ const Navbar = () => {
 
 
     const Links = <>
-        <NavLink to={'/'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  '}>Home</NavLink>
-        <NavLink to={'/AddToFindRoommate'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Add to Find Roommate</NavLink>
-        <NavLink to={'/BrowseListing'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Browse Listing</NavLink>
-        <NavLink to={'/MyListings'} className={'mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>My Listings</NavLink>
+        <NavLink to={'/'} className={'  btn text-black px-3 py-1 rounded hover:bg-blue-200 transition  mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  '}>Home</NavLink>
+        <NavLink to={'/AddToFindRoommate'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Add to Find Roommate</NavLink>
+        <NavLink to={'/BrowseListing'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Browse Listing</NavLink>
+        <NavLink to={'/MyListings'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition  mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>My Listings</NavLink>
         {
-            user ? (<NavLink to={'/myprofile'} className=" font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  "> My profile </NavLink  >) : ''
+            user ? (<NavLink to={'/myprofile'} className="btn text-black px-3 py-1 rounded hover:bg-blue-200 transition font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  "> My profile </NavLink  >) : ''
         }
     </>
 
