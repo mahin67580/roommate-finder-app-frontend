@@ -1,7 +1,41 @@
-import React from 'react';
 
-const MyListingscard = ({ useraddedpost }) => {
+import React from 'react';
+import Swal from 'sweetalert2';
+
+const MyListingscard = ({ useraddedpost, reload }) => {
     const { _id, title, location, rent } = useraddedpost;
+
+
+
+
+
+    const handleDelete = (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/roommates/${id}`, { method: "DELETE" }).then(res => res.json()).then(data => {
+                    if (data.deletedCount) {
+                        reload()
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+            }
+        });
+
+
+    };
 
     return (
         <tr className="text-center border-b hover:bg-gray-50">
@@ -16,7 +50,7 @@ const MyListingscard = ({ useraddedpost }) => {
                     Update
                 </button>
                 <button
-                    // onClick={handleDelete}
+                    onClick={() => handleDelete(_id)}
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                 >
                     Delete

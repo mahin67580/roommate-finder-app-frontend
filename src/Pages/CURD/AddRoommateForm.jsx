@@ -1,10 +1,12 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
+import { Link, Navigate, useNavigate } from "react-router";
 
 export default function AddRoommateForm() {
 
 
     const { user } = use(AuthContext)
+    const navigate =useNavigate()
     // console.log(user.email);
 
 
@@ -35,7 +37,7 @@ export default function AddRoommateForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted data:", formData);
-        
+
 
         fetch("http://localhost:3000/roommates ", {
             method: "POST",
@@ -59,7 +61,7 @@ export default function AddRoommateForm() {
                     availability: "available",
                     name: "",
                 });
-
+              navigate("/MyListings"); 
 
             }
         })
@@ -164,7 +166,7 @@ export default function AddRoommateForm() {
                 name="name"
                 type="text"
                 placeholder="Your Name"
-                value={user ? `${user.displayName} ` : ""}
+                value={user?.displayName}
                 readOnly
                 className="w-full border p-3 rounded"
 
@@ -173,6 +175,7 @@ export default function AddRoommateForm() {
             <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">
                 Add Listing
             </button>
+               
         </form>
     );
 }

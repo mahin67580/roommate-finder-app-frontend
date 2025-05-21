@@ -1,13 +1,23 @@
-import React, { use } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { use, useEffect, useState } from 'react';
+
 import { AuthContext } from '../Provider/AuthContext';
 import MyListingscard from './MyListingscard';
 
 const MyListings = () => {
 
-    const allposts = useLoaderData();
     const { user } = use(AuthContext);
-    const useraddedposts = allposts.filter(post => post.email === user.email);
+    const [userAddedPosts, setUserAddedPosts] = useState([]);
+
+    const fetchUserPosts = async () => {
+        const res = await fetch("http://localhost:3000/roommates");
+        const data = await res.json();
+        const filtered = data.filter(post => post.email === user?.email);
+        setUserAddedPosts(filtered);
+    };
+
+    useEffect(() => {
+        fetchUserPosts();
+    }, [user?.email]);
 
 
     return (
@@ -25,8 +35,12 @@ const MyListings = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {useraddedposts.map(post => (
-                                <MyListingscard key={post._id} useraddedpost={post} />
+                            {userAddedPosts.map(post => (
+                                <MyListingscard
+                                    key={post._id}
+                                    useraddedpost={post}
+                                    reload={fetchUserPosts} //  Pass reload function to child
+                                />
                             ))}
                         </tbody>
                     </table>
