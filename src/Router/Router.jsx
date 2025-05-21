@@ -50,17 +50,18 @@ export const router = createBrowserRouter([
                 path: "/login",
                 Component: Login
             },
+            {
+                path: '/myprofile',
+                element:
+                    (<Privateroute>
+                        <MyProfile></MyProfile>
+                    </Privateroute>)
+
+            },
         ]
     },
 
-    {
-        path: '/myprofile',
-        element:
-            (<Privateroute>
-                <MyProfile></MyProfile>
-            </Privateroute>)
 
-    },
     {
         path: '/roommates/:id',
         loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),

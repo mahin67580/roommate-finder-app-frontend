@@ -1,14 +1,17 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link, Navigate, useNavigate } from "react-router";
+import SpinnerLoader from "../../Components/SpinnerLoader";
 
 export default function AddRoommateForm() {
 
 
     const { user } = use(AuthContext)
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     // console.log(user.email);
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
 
     const [formData, setFormData] = useState({
@@ -61,121 +64,123 @@ export default function AddRoommateForm() {
                     availability: "available",
                     name: "",
                 });
-              navigate("/MyListings"); 
+                navigate("/MyListings");
 
             }
         })
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
-            <h2 className="text-2xl font-bold text-center">Add a Roommate Listing</h2>
+        <SpinnerLoader>
+            <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
+                <h2 className="text-2xl font-bold text-center">Add a Roommate Listing</h2>
 
-            <input
-                name="title"
-                type="text"
-                placeholder="Title (e.g., Looking for a roommate in NYC)"
-                value={formData.title}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            />
+                <input
+                    name="title"
+                    type="text"
+                    placeholder="Title (e.g., Looking for a roommate in NYC)"
+                    value={formData.title}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                />
 
-            <input
-                name="location"
-                type="text"
-                placeholder="Location"
-                value={formData.location}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            />
+                <input
+                    name="location"
+                    type="text"
+                    placeholder="Location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                />
 
-            <input
-                name="rent"
-                type="number"
-                placeholder="Rent Amount"
-                value={formData.rent}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            />
+                <input
+                    name="rent"
+                    type="number"
+                    placeholder="Rent Amount"
+                    value={formData.rent}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                />
 
-            <select
-                name="roomType"
-                value={formData.roomType}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            >
-                <option value="">Select Room Type</option>
-                <option value="Single">Single</option>
-                <option value="Shared">Shared</option>
-                <option value="Studio">Studio</option>
-            </select>
+                <select
+                    name="roomType"
+                    value={formData.roomType}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                >
+                    <option value="">Select Room Type</option>
+                    <option value="Single">Single</option>
+                    <option value="Shared">Shared</option>
+                    <option value="Studio">Studio</option>
+                </select>
 
-            <input
-                name="lifestyle"
-                type="text"
-                placeholder="Lifestyle Preferences (e.g., Pets, Smoking, Night Owl)"
-                value={formData.lifestyle}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-            />
+                <input
+                    name="lifestyle"
+                    type="text"
+                    placeholder="Lifestyle Preferences (e.g., Pets, Smoking, Night Owl)"
+                    value={formData.lifestyle}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                />
 
-            <textarea
-                name="description"
-                placeholder="Description"
-                value={formData.description}
-                onChange={handleChange}
-                className="w-full border p-3 rounded h-28"
-                required
-            />
+                <textarea
+                    name="description"
+                    placeholder="Description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded h-28"
+                    required
+                />
 
-            <input
-                name="contact"
-                type="text"
-                placeholder="Contact Info"
-                value={formData.contact}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            />
+                <input
+                    name="contact"
+                    type="text"
+                    placeholder="Contact Info"
+                    value={formData.contact}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                />
 
-            <select
-                name="availability"
-                value={formData.availability}
-                onChange={handleChange}
-                className="w-full border p-3 rounded"
-                required
-            >
-                <option value="available">Available</option>
-                <option value="not-available">Not Available</option>
-            </select>
+                <select
+                    name="availability"
+                    value={formData.availability}
+                    onChange={handleChange}
+                    className="w-full border p-3 rounded"
+                    required
+                >
+                    <option value="available">Available</option>
+                    <option value="not-available">Not Available</option>
+                </select>
 
-            <input
-                name="email"
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                readOnly
-                className="w-full border p-3 rounded bg-gray-100"
-            />
+                <input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    readOnly
+                    className="w-full border p-3 rounded bg-gray-100"
+                />
 
-            <input
-                name="name"
-                type="text"
-                placeholder="Your Name"
-                value={user?.displayName}
-                readOnly
-                className="w-full border p-3 rounded"
+                <input
+                    name="name"
+                    type="text"
+                    placeholder="Your Name"
+                    value={user?.displayName}
+                    readOnly
+                    className="w-full border p-3 rounded"
 
-            />
+                />
 
-            <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">
-                Add Listing
-            </button>
-               
-        </form>
+                <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">
+                    Add Listing
+                </button>
+
+            </form>
+        </SpinnerLoader>
     );
 }

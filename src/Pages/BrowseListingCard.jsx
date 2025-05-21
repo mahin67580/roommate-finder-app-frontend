@@ -1,8 +1,9 @@
-import React from 'react';
+ 
 import { Link } from 'react-router';
 
 const BrowseListingCard = ({ post }) => {
     const { _id, title, rent, location } = post;
+  
     return (
         <>
             <td className="py-3 px-4 border border-gray-300">{title}</td>
