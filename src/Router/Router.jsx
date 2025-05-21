@@ -14,6 +14,7 @@ import MyProfile from "../Components/MyProfile";
 import Privateroute from "../private/Privateroute";
 import AddRoommateForm from "../Pages/CURD/AddRoommateForm";
 import Details from "../Components/Details";
+import Errorpage from "../Components/Errorpage";
 
 export const router = createBrowserRouter([
     {
@@ -71,5 +72,9 @@ export const router = createBrowserRouter([
 
 
     },
+    {
+        path: "*",
+        element: <Errorpage />
+    }
 
 ]);
