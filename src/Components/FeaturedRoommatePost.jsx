@@ -18,8 +18,9 @@ const FeaturedRoommatePost = () => {
 
 
     console.log(RoommatePosts);
+  
 
-
+   const avaiablePost = RoommatePosts.filter(RoommatePost=>RoommatePost.availability==="available").slice(0, 6);
 
 
     return (
@@ -27,7 +28,7 @@ const FeaturedRoommatePost = () => {
             <h1 className='text-center p-10 text-3xl font-bold mt-10'>Featured Roommates</h1>
             <div className='grid lg:grid-cols-3 grid-cols-1 gap-4 w-11/12 mx-auto p-8'>
                 {
-                    RoommatePosts.map(post => <RoommatePostCard key={post._id} post={post}></RoommatePostCard>)
+                    avaiablePost.map(post => <RoommatePostCard key={post._id} post={post}></RoommatePostCard>)
                 }
             </div>
         </div>
