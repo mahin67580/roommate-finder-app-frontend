@@ -1,9 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const MyListingscard = ({ useraddedpost, reload }) => {
     const { _id, title, location, rent } = useraddedpost;
+
 
 
 
@@ -37,26 +39,49 @@ const MyListingscard = ({ useraddedpost, reload }) => {
 
     };
 
+
+
+
+
+
+
+
+
+
     return (
-        <tr className="text-center border-b hover:bg-gray-50">
-            <td className="py-2 px-4">{title}</td>
-            <td className="py-2 px-4">{location}</td>
-            <td className="py-2 px-4">৳{rent}</td>
-            <td className="py-2 px-4 flex justify-center items-center">
-                <button
-                    // onClick={handleUpdate}
-                    className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2"
-                >
-                    Update
-                </button>
-                <button
-                    onClick={() => handleDelete(_id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                >
-                    Delete
-                </button>
-            </td>
-        </tr>
+        <>
+
+
+
+            <tr className="text-center border-b hover:bg-gray-50">
+                <td className="py-2 px-4">{title}</td>
+                <td className="py-2 px-4">{location}</td>
+                <td className="py-2 px-4">৳{rent}</td>
+                <td className="py-2 px-4 flex justify-center items-center">
+
+
+                    <Link to={`/Update/${_id}`}><button className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2">
+                        Update
+                    </button></Link>
+
+
+
+                    <button
+                        onClick={() => handleDelete(_id)}
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    >
+                        Delete
+                    </button>
+                </td>
+
+
+            </tr>
+
+
+
+
+        </>
+
     );
 };
 

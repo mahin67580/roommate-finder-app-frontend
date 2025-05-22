@@ -15,6 +15,7 @@ import Privateroute from "../private/Privateroute";
 import AddRoommateForm from "../Pages/CURD/AddRoommateForm";
 import Details from "../Components/Details";
 import Errorpage from "../Components/Errorpage";
+import Update from "../Components/Update";
 
 export const router = createBrowserRouter([
     {
@@ -39,10 +40,20 @@ export const router = createBrowserRouter([
             {
                 path: '/MyListings',
                 // loader: () => fetch("http://localhost:3000/roommates"),
+
                 element: (<Privateroute>
                     <MyListings></MyListings>
                 </Privateroute>)
             },
+            {
+                path: '/Update/:id',
+                
+                loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
+                element: (<Privateroute>
+                    <Update></Update>
+                </Privateroute>)
+            },
+
             {
                 path: "/register",
                 Component: Register
