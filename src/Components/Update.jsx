@@ -62,7 +62,7 @@ const Update = () => {
 
     return (
         <SpinnerLoader>
-            <form onSubmit={hndleupdate} className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
+            <form onSubmit={hndleupdate} className="max-w-3xl mx-auto p-6   rounded-xl shadow-md space-y-4">
                 <h2 className="text-2xl font-bold text-center">Update Roommate Listing</h2>
 
                 <label className='font-bold'>Title</label>
@@ -103,10 +103,10 @@ const Update = () => {
                     className="w-full border p-3 rounded"
                     required
                 >
-                    <option value="">Select Room Type</option>
-                    <option value="Single">Single</option>
-                    <option value="Shared">Shared</option>
-                    <option value="Studio">Studio</option>
+                    <option className='text-blue-950 font-semibold' value="">Select Room Type</option>
+                    <option className='text-blue-800' value="Single">Single</option>
+                    <option className='text-blue-800'  value="Shared">Shared</option>
+                    <option className='text-blue-800' value="Studio">Studio</option>
                 </select>
                 <label className='font-bold'>Lifestyle</label>
                 <input
@@ -155,7 +155,7 @@ const Update = () => {
                     value={email}
 
                     readOnly
-                    className="w-full border p-3 rounded bg-gray-100"
+                    className="w-full border p-3 rounded "
                 />
                 <label className='font-bold'>Name</label>
                 <input
