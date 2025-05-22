@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
+import Swal from 'sweetalert2';
 
 const AuthProvider = ({ children }) => {
 
@@ -11,8 +12,15 @@ const AuthProvider = ({ children }) => {
 
 
     const createUser = (email, password) => {
-        alert('Register succesfull')
-         setLoading(true)
+         
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registration successful",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        setLoading(true)
 
         return createUserWithEmailAndPassword(auth, email, password)
 
@@ -23,12 +31,12 @@ const AuthProvider = ({ children }) => {
     }
 
     const login = (email, password) => {
-        
+
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const updateUser = (updatedData) => {
-       
+
         return updateProfile(auth.currentUser, updatedData)
 
     }

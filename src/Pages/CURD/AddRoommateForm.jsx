@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link, Navigate, useNavigate } from "react-router";
 import SpinnerLoader from "../../Components/SpinnerLoader";
+import Swal from "sweetalert2";
 
 export default function AddRoommateForm() {
 
@@ -52,7 +53,14 @@ export default function AddRoommateForm() {
         }).then(res => res.json()).then(data => {
             console.log("data from serverDB", data);
             if (data.insertedId) {
-                alert('user added done')
+                
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your list has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 setFormData({
                     title: "",
                     location: "",

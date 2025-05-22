@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SpinnerLoader from './SpinnerLoader';
+import Swal from 'sweetalert2';
 
 const MyProfile = () => {
 
@@ -26,9 +27,22 @@ const MyProfile = () => {
             .then(() => {
                 setUser({ ...user, displayName: name, photoURL: photo });
                 form.reset();
-                alert('Action completed successfully!');
-            }).catch((error) => {
-                alert(error);
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }).catch(() => {
+               
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    
+                });
             });
     }
 
@@ -37,7 +51,7 @@ const MyProfile = () => {
     return (
         <SpinnerLoader>
             <div>
-             
+
                 <div className='place-items-center  py-10 '>
                     <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
                         <img src={`${user && user.photoURL}`} alt="" className=" w-full object-cover mx-auto rounded-full dark:bg-gray-500 aspect-square" />
@@ -98,7 +112,7 @@ const MyProfile = () => {
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </SpinnerLoader>
     );

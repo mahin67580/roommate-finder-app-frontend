@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import SpinnerLoader from './SpinnerLoader';
 import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
+import Swal from 'sweetalert2';
 
 
 const Update = () => {
@@ -43,10 +44,17 @@ const Update = () => {
             console.log("data from serverDB", data);
             if (data.acknowledged) {
 
-                alert("User updated");
-                navigate('/MyListings') 
-       
-         
+                //alert("User updated");
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your list has been updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/MyListings')
+
+
             }
         })
 
