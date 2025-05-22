@@ -4,6 +4,7 @@ import { AuthContext } from '../Provider/AuthContext';
 import { Link, useNavigate } from 'react-router';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
@@ -12,7 +13,7 @@ const Register = () => {
 
     const provider = new GoogleAuthProvider();
 
-    const { createUser, setUser, updateUser} = use(AuthContext)
+    const { createUser, setUser, updateUser } = use(AuthContext)
     const [nameError, setNameError] = useState('')
     const [passError, setPassError] = useState('')
     const navigate = useNavigate()
@@ -28,7 +29,7 @@ const Register = () => {
         else {
             setNameError("")
         }
-       const photo = form.photo.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         if (password.length < 5) {
@@ -52,10 +53,10 @@ const Register = () => {
                 console.log(user);
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
-                         navigate('/')
+                        navigate('/')
                         setUser({ ...user, displayName: name, photoURL: photo });
-                          
-                       
+
+
                     }).catch((error) => {
                         console.log(error);
 
@@ -78,7 +79,14 @@ const Register = () => {
 
         signInWithPopup(auth, provider).then(() => {
             navigate('/')
-            alert("Login successful! welcome ");
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Login successful! welcome ",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }).catch(error => {
             console.log(error);
 

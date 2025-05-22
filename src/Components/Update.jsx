@@ -44,7 +44,7 @@ const Update = () => {
             console.log("data from serverDB", data);
             if (data.acknowledged) {
 
-                //alert("User updated");
+               
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

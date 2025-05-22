@@ -39,11 +39,11 @@ const Login = () => {
 
                 navigate(`${location.state ? location.state : '/'}`)
 
-                //  alert(`'login done'${user.email}`)
+           
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `"Logged in successful",welcome ${user.email}`,
+                    title: `"Log in successful",welcome ${user.email}`,
                     showConfirmButton: false,
                     timer: 1000
                 });
@@ -71,7 +71,7 @@ const Login = () => {
 
         signInWithPopup(auth, provider).then(() => {
             navigate(`${location.state ? location.state : '/'}`)
-            //alert("Login successful! welcome ");
+          
             Swal.fire({
                 position: "top-end",
                 icon: "success",
