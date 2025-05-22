@@ -7,8 +7,9 @@ import { AuthContext } from '../Provider/AuthContext';
 
 const Details = () => {
     const post = useLoaderData()
-    const { user } = use(AuthContext)  
+    const { user } = use(AuthContext)
     const [count, setCount] = useState(post?.likes || 0);
+    const [showcontact, setshowcontact] = useState(false)
     const { _id, title, rent, location, availability, contact, description, lifestyle, roomType, email } = post;
 
 
@@ -27,6 +28,8 @@ const Details = () => {
 
         const newCount = count + 1;
         setCount(newCount);
+
+        setshowcontact(true)
 
 
         fetch(`http://localhost:3000/roommates/${id}`, {
@@ -50,6 +53,9 @@ const Details = () => {
 
             }
         })
+
+
+
     }
 
 
@@ -62,12 +68,15 @@ const Details = () => {
                 <p className="text-gray-600 mb-4"><strong>Location:</strong> {location}</p>
                 <p className="text-gray-600 mb-4"><strong>Rent:</strong> {rent}</p>
                 <p className="text-gray-600 mb-4"><strong>availability:</strong> {availability}</p>
-                <p className="text-gray-600 mb-4"><strong>contact:</strong> {contact}</p>
+
                 <p className="text-gray-600 mb-4"><strong>description:</strong> {description}</p>
                 <p className="text-gray-600 mb-4"><strong>lifestyle:</strong> {lifestyle}</p>
                 <p className="text-gray-600 mb-4"><strong>roomType:</strong> {roomType}</p>
                 <p className="text-gray-600 mb-4"><strong>email:</strong> {email}</p>
-                <button onClick={() => handleLike(_id)} className="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Like</button>
+                <button onClick={() => handleLike(_id)} className="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition mb-4">Like</button>
+                {
+                    showcontact && (<p className="text-gray-600  "><strong>contact:</strong> {contact}</p>)
+                }
             </div>
             <Footer></Footer>
         </div>
