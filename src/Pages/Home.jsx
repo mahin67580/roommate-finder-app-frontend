@@ -5,7 +5,7 @@ import BannerText from '../Components/BannerText';
 
 const Home = () => {
     return (
-        <div className='min-h-screen relative'>
+        <div className='min-h-screen relative '>
 
             <div>
                 <Banner></Banner>

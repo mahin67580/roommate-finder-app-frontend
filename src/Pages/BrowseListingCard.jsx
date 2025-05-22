@@ -6,7 +6,7 @@ const BrowseListingCard = ({ post }) => {
   
     return (
         <>
-            <td className="py-3 px-4 border border-gray-300">{title}</td>
+            <td className="py-3 px-4 border  border-gray-300">{title}</td>
             <td className="py-3 px-4 border border-gray-300">{location}</td>
             <td className="py-3 px-4 border border-gray-300">৳{rent}</td>
             <td className="py-3 px-4 border border-gray-300">

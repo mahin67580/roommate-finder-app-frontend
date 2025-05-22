@@ -80,8 +80,8 @@ export default function AddRoommateForm() {
 
     return (
         <SpinnerLoader>
-            <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
-                <h2 className="text-2xl font-bold text-center">Add a Roommate Listing</h2>
+            <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6   rounded-xl shadow-md space-y-4">
+                <h2 className="text-2xl text-base-content   font-bold text-center">Add a Roommate Listing</h2>
 
                 <input
                     name="title"

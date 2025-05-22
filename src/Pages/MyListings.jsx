@@ -31,8 +31,8 @@ const MyListings = () => {
                     <div className="min-h-screen p-6">
                         <h1 className="text-3xl font-bold text-center mb-6">My Listings</h1>
                         <div className="overflow-x-auto">
-                            <table className="min-w-full bg-white border shadow-md rounded">
-                                <thead className="bg-gray-200">
+                            <table className="min-w-full  bg-base-200 border shadow-md rounded">
+                                <thead className="bg-base-200">
                                     <tr className="text-center">
                                         <th className="py-3 px-4">Title</th>
                                         <th className="py-3 px-4">Location</th>

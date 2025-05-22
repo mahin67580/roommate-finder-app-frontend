@@ -3,10 +3,21 @@ import { Link, NavLink } from 'react-router';
 import navlogo from '../assets/Animation - 1746735500248 (1).gif'
 import usericon from '../assets/profile.png'
 import { AuthContext } from '../Provider/AuthContext';
-import { use } from 'react';
+import { use, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 const Navbar = () => {
 
+
+    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    };
 
     const { user, logout } = use(AuthContext)
 
@@ -16,7 +27,7 @@ const Navbar = () => {
 
         logout()
             .then(() => {
-              
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -34,13 +45,19 @@ const Navbar = () => {
 
 
     const Links = <>
-        <NavLink to={'/'} className={'  btn text-black px-3 py-1 rounded hover:bg-blue-200 transition  mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  '}>Home</NavLink>
-        <NavLink to={'/AddToFindRoommate'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Add to Find Roommate</NavLink>
-        <NavLink to={'/BrowseListing'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>Browse Listing</NavLink>
-        <NavLink to={'/MyListings'} className={'btn text-black px-3 py-1 rounded hover:bg-blue-200 transition  mr-5 font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110'}>My Listings</NavLink>
+        <NavLink to={'/'} className={' btn    text-base-content mr-5 '}>Home</NavLink>
+        <NavLink to={'/AddToFindRoommate'} className={'btn     text-base-content mr-5'}>Add to Find Roommate</NavLink>
+        <NavLink to={'/BrowseListing'} className={'btn  text-base-content mr-5'}>Browse Listing</NavLink>
+        <NavLink to={'/MyListings'} className={'btn     text-base-content mr-5'}>My Listings</NavLink>
         {
-            user ? (<NavLink to={'/myprofile'} className="btn text-black px-3 py-1 rounded hover:bg-blue-200 transition font-semibold duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  "> My profile </NavLink  >) : ''
+            user ? (<NavLink to={'/myprofile'} className="btn btn-ghost   text-base-content mr-5 "> My profile </NavLink  >) : ''
         }
+        <button
+            onClick={toggleTheme}
+            className="btn btn-sm btn-primary ml-5 mt-1 "
+        >
+            Toggle {theme === 'light' ? '🌙' : '☀️'}
+        </button>
     </>
 
 
@@ -69,7 +86,11 @@ const Navbar = () => {
                     <div className='flex items-center'>
 
                         {
-                            <Link to={'/'}> <p className="btn btn-ghost text-xl text-green-600">Grab<span className='text-black'>Roommate</span></p></Link>
+                            <Link to={'/'}><p className="btn btn-ghost text-xl text-primary">
+                                Grab<span className="text-base-content">Roommate</span>
+                            </p>
+
+                            </Link>
                         }
                         <img className='w-9' src={navlogo} alt="" />
                     </div>
@@ -79,6 +100,7 @@ const Navbar = () => {
                         {
                             Links
                         }
+
 
                     </ul>
                 </div>

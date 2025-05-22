@@ -53,7 +53,7 @@ const MyListingscard = ({ useraddedpost, reload }) => {
 
 
 
-            <tr className="text-center border-b hover:bg-gray-50">
+            <tr className="text-center border-b  ">
                 <td className="py-2 px-4">{title}</td>
                 <td className="py-2 px-4">{location}</td>
                 <td className="py-2 px-4">৳{rent}</td>
