@@ -26,6 +26,7 @@ A full-stack web application designed to help users find compatible roommates ba
 ## 🚀 Extra Features
 - **Count Up animation in Home page** 
 - **Accordion section with necessary questions in Home page** 
+- **Used Lottie-React in Featured roommate as a visual impact and React Tooltip in Detains page in Like button to indicate Linking will reveal the contact number, ** 
 
 --
 ## 🛠️ Tech Stack
