@@ -114,7 +114,7 @@ const Navbar = () => {
                             <img src={user ? user.photoURL : usericon} className="object-cover w-full h-full" />
                         </div>
 
-                        <span className=" text-sm font-medium mr-4 text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className=" text-sm font-medium mr-4   opacity-0 group-hover:opacity-100 transition-opacity">
                             {user?.displayName}
                         </span>
                     </div>
