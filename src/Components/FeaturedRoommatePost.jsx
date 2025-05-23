@@ -9,7 +9,7 @@ const FeaturedRoommatePost = () => {
     const [RoommatePosts, setRoommatePost] = useState([]);
 
     const fetchsetRoommatePosts = async () => {
-        const res = await fetch("http://localhost:3000/roommates");
+        const res = await fetch("https://roommateserver-production.up.railway.app/roommates");
         const data = await res.json();
         setRoommatePost(data);
     };
@@ -19,7 +19,7 @@ const FeaturedRoommatePost = () => {
     }, []);
 
 
-    
+
 
 
     const avaiablePost = RoommatePosts.filter(RoommatePost => RoommatePost.availability === "available").slice(0, 6);

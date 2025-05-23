@@ -47,7 +47,7 @@ export default function AddRoommateForm() {
         
 
 
-        fetch("http://localhost:3000/roommates ", {
+        fetch("https://roommateserver-production.up.railway.app/roommates ", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

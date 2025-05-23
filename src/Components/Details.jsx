@@ -36,7 +36,7 @@ const Details = () => {
         setshowcontact(true)
 
 
-        fetch(`http://localhost:3000/roommates/${id}`, {
+        fetch(`https://roommateserver-production.up.railway.app/roommates/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ likes: newCount }),

@@ -23,7 +23,7 @@ const MyListingscard = ({ useraddedpost, reload }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/roommates/${id}`, { method: "DELETE" }).then(res => res.json()).then(data => {
+                fetch(`https://roommateserver-production.up.railway.app/roommates/${id}`, { method: "DELETE" }).then(res => res.json()).then(data => {
                     if (data.deletedCount) {
                         reload()
                         Swal.fire({
