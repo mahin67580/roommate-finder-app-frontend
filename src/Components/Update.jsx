@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import SpinnerLoader from './SpinnerLoader';
 import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
@@ -6,6 +6,11 @@ import Swal from 'sweetalert2';
 
 
 const Update = () => {
+
+     useEffect(() => {
+                document.title = 'Update  Listing';
+                window.scrollTo(0, 0);
+            }, []);
 
     const post = useLoaderData()
     const { user } = use(AuthContext)
@@ -144,8 +149,8 @@ const Update = () => {
                     className="w-full border p-3 rounded"
                     required
                 >
-                    <option value="available">Available</option>
-                    <option value="not-available">Not Available</option>
+                    <option className='text-blue-800' value="available">Available</option>
+                    <option className='text-blue-800'  value="not-available">Not Available</option>
                 </select>
                 <label className='font-bold'>Email</label>
                 <input

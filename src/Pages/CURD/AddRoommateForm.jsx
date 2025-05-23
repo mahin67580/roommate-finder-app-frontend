@@ -7,10 +7,13 @@ import Swal from "sweetalert2";
 export default function AddRoommateForm() {
 
 
+    
+
     const { user } = use(AuthContext)
     const navigate = useNavigate()
     // console.log(user.email);
     useEffect(() => {
+          document.title = 'Add Roommate Listing';
         window.scrollTo(0, 0);
     }, []);
 
@@ -40,7 +43,8 @@ export default function AddRoommateForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted data:", formData);
+
+        
 
 
         fetch("http://localhost:3000/roommates ", {

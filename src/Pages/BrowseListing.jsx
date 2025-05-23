@@ -7,6 +7,7 @@ const BrowseListing = () => {
 
     const posts = useLoaderData();
     useEffect(() => {
+         document.title = ' Browse ';
         window.scrollTo(0, 0);
     }, []);
 

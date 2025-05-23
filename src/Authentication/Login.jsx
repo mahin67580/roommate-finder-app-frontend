@@ -12,7 +12,7 @@ const Login = () => {
 
     useEffect(() => {
         document.title = 'Login';
-
+        window.scrollTo(0, 0);
     }, []);
 
 
@@ -39,7 +39,7 @@ const Login = () => {
 
                 navigate(`${location.state ? location.state : '/'}`)
 
-           
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -58,8 +58,8 @@ const Login = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text:` ${ errorMessage }`,
-                   
+                    text: ` ${errorMessage}`,
+
                 });
 
             });
@@ -71,7 +71,7 @@ const Login = () => {
 
         signInWithPopup(auth, provider).then(() => {
             navigate(`${location.state ? location.state : '/'}`)
-          
+
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -80,7 +80,13 @@ const Login = () => {
                 timer: 1000
             });
         }).catch(error => {
-            console.log(error);
+    
+            Swal.fire({
+                icon: "error",
+                title: `"Oops...${error}"`,
+                text: "Something went wrong!",
+                 
+            });
 
         })
 

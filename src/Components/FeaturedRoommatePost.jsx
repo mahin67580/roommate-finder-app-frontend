@@ -19,7 +19,7 @@ const FeaturedRoommatePost = () => {
     }, []);
 
 
-    console.log(RoommatePosts);
+    
 
 
     const avaiablePost = RoommatePosts.filter(RoommatePost => RoommatePost.availability === "available").slice(0, 6);

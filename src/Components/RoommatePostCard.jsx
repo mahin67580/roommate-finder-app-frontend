@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const RoommatePostCard = ({ post }) => {
     const { _id, title, rent, location, likes, availability } = post;
-    console.log(post);
+    
     return (
         <div>
             <div className="  p-6 rounded-xl shadow-md border hover:shadow-lg transition duration-300">

@@ -1,5 +1,5 @@
 
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthContext';
 import { Link, useNavigate } from 'react-router';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -8,7 +8,10 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
 
-
+    useEffect(() => {
+        document.title = 'Register';
+        window.scrollTo(0, 0);
+    }, []);
 
 
     const provider = new GoogleAuthProvider();
@@ -50,7 +53,7 @@ const Register = () => {
             .then((userCredential) => {
 
                 const user = userCredential.user;
-                console.log(user);
+
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
                         navigate('/')
@@ -58,7 +61,12 @@ const Register = () => {
 
 
                     }).catch((error) => {
-                        console.log(error);
+                        Swal.fire({
+                            icon: "error",
+                            title: `"Oops..."${error}`,
+                            text: "Something went wrong!",
+                            footer: '<a href="#">Why do I have this issue?</a>'
+                        });
 
                     });
 
@@ -68,7 +76,12 @@ const Register = () => {
             .catch((error) => {
                 // const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                Swal.fire({
+                    icon: "error",
+                    title: ` "Oops..." ${errorMessage}`,
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
 
                 // ..
             });
@@ -88,7 +101,12 @@ const Register = () => {
                 timer: 1500
             });
         }).catch(error => {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: ` "Oops..." ${error}`,
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
 
         })
 

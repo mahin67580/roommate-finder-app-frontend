@@ -19,6 +19,7 @@ const MyListings = () => {
     };
 
     useEffect(() => {
+        document.title='My Listings'
         fetchUserPosts();
         window.scrollTo(0, 0);
     }, [user?.email,]);

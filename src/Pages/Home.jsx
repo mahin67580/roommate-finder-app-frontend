@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../Components/Banner';
 import FeaturedRoommatePost from '../Components/FeaturedRoommatePost';
 import BannerText from '../Components/BannerText';
 
 const Home = () => {
+     useEffect(() => {
+            document.title = 'Home';
+            window.scrollTo(0, 0);
+        }, []);
     return (
         <div className='min-h-screen relative '>
 

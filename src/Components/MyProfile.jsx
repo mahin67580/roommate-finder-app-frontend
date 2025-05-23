@@ -1,14 +1,13 @@
 import React, { use, useEffect } from 'react';
 import { AuthContext } from '../Provider/AuthContext';
-import Navbar from './Navbar';
-import Footer from './Footer';
+ 
 import SpinnerLoader from './SpinnerLoader';
 import Swal from 'sweetalert2';
 
 const MyProfile = () => {
 
     useEffect(() => {
-        document.title = 'Profile';
+        document.title = 'My Profile';
         window.scrollTo(0, 0);
     }, []);
 
