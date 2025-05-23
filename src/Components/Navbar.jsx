@@ -1,6 +1,6 @@
 
 import { Link, NavLink } from 'react-router';
- 
+ import navlogo from '../assets/Animation - 1746735500248 (1).gif'
 import usericon from '../assets/profile.png'
 import { AuthContext } from '../Provider/AuthContext';
 import { use, useEffect, useState } from 'react';
@@ -94,7 +94,7 @@ const Navbar = () => {
 
                             </Link>
                         }
-                      
+                      <img className='w-9' src={navlogo} alt="" />
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
