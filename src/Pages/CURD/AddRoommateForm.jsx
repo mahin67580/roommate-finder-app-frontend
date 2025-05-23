@@ -120,10 +120,10 @@ export default function AddRoommateForm() {
                     className="w-full border p-3 rounded"
                     required
                 >
-                    <option value="">Select Room Type</option>
-                    <option value="Single">Single</option>
-                    <option value="Shared">Shared</option>
-                    <option value="Studio">Studio</option>
+                    <option className="text-blue-800 font-bold" value="">Select Room Type</option>
+                    <option className="text-blue-800" value="Single">Single</option>
+                    <option className="text-blue-800" value="Shared">Shared</option>
+                    <option className="text-blue-800" value="Studio">Studio</option>
                 </select>
 
                 <input
@@ -161,8 +161,8 @@ export default function AddRoommateForm() {
                     className="w-full border p-3 rounded"
                     required
                 >
-                    <option value="available">Available</option>
-                    <option value="not-available">Not Available</option>
+                    <option className="text-blue-800  " value="available">Available</option>
+                    <option className="text-blue-800  " value="not-available">Not Available</option>
                 </select>
 
                 <input
@@ -171,7 +171,7 @@ export default function AddRoommateForm() {
                     placeholder="Your Email"
                     value={formData.email}
                     readOnly
-                    className="w-full border p-3 rounded bg-gray-100"
+                    className="w-full border p-3 rounded "
                 />
 
                 <input

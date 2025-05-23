@@ -33,7 +33,7 @@ const MyListings = () => {
                         <div className="overflow-x-auto">
                             <table className="min-w-full  bg-base-200 border shadow-md rounded">
                                 <thead className="bg-base-200">
-                                    <tr className="text-center">
+                                    <tr className="text-center border-b-2">
                                         <th className="py-3 px-4">Title</th>
                                         <th className="py-3 px-4">Location</th>
                                         <th className="py-3 px-4">Rent</th>

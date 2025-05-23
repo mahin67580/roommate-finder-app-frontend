@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@lottiefiles/dotlottie-react": "^0.13.5",
     "@tailwindcss/vite": "^4.1.7",
     "firebase": "^11.8.0",
+    "lottie-react": "^2.4.1",
     "react": "^19.1.0",
+    "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.0",
+    "react-tooltip": "^5.28.1",
     "sweetalert2": "^11.21.2"
   },
   "devDependencies": {

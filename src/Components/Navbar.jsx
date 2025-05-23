@@ -5,6 +5,8 @@ import usericon from '../assets/profile.png'
 import { AuthContext } from '../Provider/AuthContext';
 import { use, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
 const Navbar = () => {
 
 
@@ -54,7 +56,7 @@ const Navbar = () => {
         }
         <button
             onClick={toggleTheme}
-            className="btn btn-sm btn-primary ml-5 mt-1 "
+            className="btn btn-sm btn-primary ml-5 mt-1 " data-tooltip-id="my-tooltip-2"
         >
             Toggle {theme === 'light' ? '🌙' : '☀️'}
         </button>
@@ -125,6 +127,11 @@ const Navbar = () => {
 
                 </div>
             </div>
+            <ReactTooltip
+                id="my-tooltip-2"
+                place="bottom"
+                content="Toggle Theme"
+            />
         </div>
     );
 };
