@@ -1,15 +1,20 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import { Tooltip as ReactTooltip } from "react-tooltip";
- 
- 
- 
+
+
+
 
 const Details = () => {
+
+    useEffect(() => {
+        document.title = 'Details';
+        window.scrollTo(0, 0);
+    }, []);
     const post = useLoaderData()
     const { user } = use(AuthContext)
     const [count, setCount] = useState(post?.likes || 0);
@@ -82,8 +87,8 @@ const Details = () => {
                     showcontact && (<p className="text-gray-600  "><strong>contact:</strong> {contact}</p>)
                 }
             </div>
- 
-    
+
+
 
             <Footer></Footer>
             <ReactTooltip
