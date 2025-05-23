@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useCallback, useEffect, useState } from 'react';
 
 import { AuthContext } from '../Provider/AuthContext';
 import MyListingscard from './MyListingscard';
@@ -9,20 +9,34 @@ const MyListings = () => {
     const { user } = use(AuthContext);
     const [userAddedPosts, setUserAddedPosts] = useState([]);
 
-    
 
-    const fetchUserPosts = async () => {
+
+    // const fetchUserPosts = async () => {
+    //     const res = await fetch("http://localhost:3000/roommates");
+    //     const data = await res.json();
+    //     const filtered = data.filter(post => post.email === user?.email);
+    //     setUserAddedPosts(filtered);
+    // };
+
+    // useEffect(() => {
+    //     document.title='My Listings'
+    //     fetchUserPosts();
+    //     window.scrollTo(0, 0);
+    // }, [user?.email,]);    
+
+    const fetchUserPosts = useCallback(async () => {
         const res = await fetch("http://localhost:3000/roommates");
         const data = await res.json();
         const filtered = data.filter(post => post.email === user?.email);
         setUserAddedPosts(filtered);
-    };
+    }, [user?.email]);
 
     useEffect(() => {
-        document.title='My Listings'
-        fetchUserPosts();
+        document.title = 'My Listings';
         window.scrollTo(0, 0);
-    }, [user?.email,]);
+        fetchUserPosts();
+    }, [fetchUserPosts]);
+
 
 
     return (
