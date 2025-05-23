@@ -41,7 +41,7 @@ const Details = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ likes: newCount }),
         }).then(res => res.json()).then(data => {
-            console.log("data from serverDB", data);
+            // console.log("data from serverDB", data);
             if (data.acknowledged) {
 
 

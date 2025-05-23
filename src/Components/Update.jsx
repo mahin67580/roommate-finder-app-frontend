@@ -38,7 +38,7 @@ const Update = () => {
             lifestyle,
             roomType
         }
-        console.log(updatedata);
+        // console.log(updatedata);
 
 
         fetch(`http://localhost:3000/roommates/${_id}`, {
@@ -46,7 +46,7 @@ const Update = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedata),
         }).then(res => res.json()).then(data => {
-            console.log("data from serverDB", data);
+            // console.log("data from serverDB", data);
             if (data.acknowledged) {
 
                
