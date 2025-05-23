@@ -52,7 +52,7 @@ const Navbar = () => {
         <NavLink to={'/BrowseListing'} className={'btn  text-base-content mr-5'}>Browse Listing</NavLink>
         <NavLink to={'/MyListings'} className={'btn     text-base-content mr-5'}>My Listings</NavLink>
         {
-            user ? (<NavLink to={'/myprofile'} className="btn btn-ghost   text-base-content mr-5 "> My profile </NavLink  >) : ''
+            user ? (<NavLink to={'/myprofile'} className="btn     text-base-content mr-5 "> My profile </NavLink  >) : ''
         }
         <button
             onClick={toggleTheme}
