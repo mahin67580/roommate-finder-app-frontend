@@ -85,7 +85,7 @@ Sensitive information like Firebase Config and MongoDB URI are securely stored i
 ```env
 VITE_FIREBASE_API_KEY=xxxx
 VITE_FIREBASE_AUTH_DOMAIN=xxxx
-MONGODB_URI=xxxx
+ 
 ```
 
 ---
