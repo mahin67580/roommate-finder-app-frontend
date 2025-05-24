@@ -26,7 +26,13 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         if (name.length < 5) {
-            setNameError("Name should be more then 5 character")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Name should be more then 5 character!",
+
+            });
+            // setNameError("Name should be more then 5 character")
             return;
         }
         else {
@@ -36,14 +42,32 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         if (password.length < 5) {
-            setPassError("password should be more then 5 character")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "password should be more then 5 character!",
+
+            });
+            //setPassError("password should be more then 5 character")
             return;
         }
         else if (!/[A-Z]/.test(password)) {
-            setPassError("Password must contain at least one uppercase letter");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must contain at least one uppercase letter!",
+
+            });
+            //setPassError("Password must contain at least one uppercase letter");
             return;
         } else if (!/[a-z]/.test(password)) {
-            setPassError("Password must contain at least one lowercase letter");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must contain at least one lowercase letter!",
+
+            });
+            //setPassError("Password must contain at least one lowercase letter");
             return;
         }
         else {
@@ -65,7 +89,7 @@ const Register = () => {
                             icon: "error",
                             title: `"Oops..."${error}`,
                             text: "Something went wrong!",
-                            footer: '<a href="#">Why do I have this issue?</a>'
+
                         });
 
                     });
@@ -80,7 +104,7 @@ const Register = () => {
                     icon: "error",
                     title: ` "Oops..." ${errorMessage}`,
                     text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+
                 });
 
                 // ..
@@ -105,7 +129,7 @@ const Register = () => {
                 icon: "error",
                 title: ` "Oops..." ${error}`,
                 text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
+                 
             });
 
         })
