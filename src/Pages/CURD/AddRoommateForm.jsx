@@ -47,7 +47,7 @@ export default function AddRoommateForm() {
         
 
 
-        fetch("https://roommateserver-production.up.railway.app/roommates ", {
+        fetch("https://room-mate-server.vercel.app/roommates ", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

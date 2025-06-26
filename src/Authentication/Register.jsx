@@ -91,7 +91,6 @@ const Register = () => {
                             text: "Something went wrong!",
 
                         });
-
                     });
 
 

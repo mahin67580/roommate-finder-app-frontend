@@ -4,7 +4,7 @@ A full-stack web application designed to help users find compatible roommates ba
 
 ### 🔗 Live Site
 
-[👉 Visit Live Website]  https://roommate-app-a4ed0.web.app/ 
+[👉 Visit Live Website]  https://roommate-app-a4ed0.web.app/
 
 ### 🔗 Web Site Name
 

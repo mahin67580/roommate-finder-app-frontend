@@ -9,7 +9,7 @@ const FeaturedRoommatePost = () => {
     const [RoommatePosts, setRoommatePost] = useState([]);
 
     const fetchsetRoommatePosts = async () => {
-        const res = await fetch("https://roommateserver-production.up.railway.app/roommates");
+        const res = await fetch("https://room-mate-server.vercel.app/roommates");
         const data = await res.json();
         setRoommatePost(data);
     };

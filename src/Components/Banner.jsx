@@ -8,7 +8,7 @@ const images = [
     "https://images.pexels.com/photos/4778621/pexels-photo-4778621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://na.rdcpix.com/9bb74cef318af12a85a8017232f4668dw-c3306558496xd-w928_q80.jpg"
 
-
+ 
 
 
 ];

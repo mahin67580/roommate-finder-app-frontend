@@ -12,7 +12,7 @@ const MyListings = () => {
 
 
     // const fetchUserPosts = async () => {
-    //     const res = await fetch("https://roommateserver-production.up.railway.app/roommates");
+    //     const res = await fetch("https://room-mate-server.vercel.app/roommates");
     //     const data = await res.json();
     //     const filtered = data.filter(post => post.email === user?.email);
     //     setUserAddedPosts(filtered);
@@ -25,7 +25,7 @@ const MyListings = () => {
     // }, [user?.email,]);    
 
     const fetchUserPosts = useCallback(async () => {
-        const res = await fetch("https://roommateserver-production.up.railway.app/roommates");
+        const res = await fetch("https://room-mate-server.vercel.app/roommates");
         const data = await res.json();
         const filtered = data.filter(post => post.email === user?.email);
         setUserAddedPosts(filtered);

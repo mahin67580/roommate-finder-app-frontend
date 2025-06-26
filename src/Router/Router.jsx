@@ -34,12 +34,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/BrowseListing',
-                loader: () => fetch("https://roommateserver-production.up.railway.app/roommates"),
+                loader: () => fetch("https://room-mate-server.vercel.app/roommates"),
                 element: <BrowseListing></BrowseListing>
             },
             {
                 path: '/MyListings',
-                // loader: () => fetch("https://roommateserver-production.up.railway.app/roommates"),
+                // loader: () => fetch("https://room-mate-server.vercel.app/roommates"),
 
                 element: (<Privateroute>
                     <MyListings></MyListings>
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
             {
                 path: '/Update/:id',
                 
-                loader: ({ params }) => fetch(`https://roommateserver-production.up.railway.app/roommates/${params.id}`),
+                loader: ({ params }) => fetch(`https://room-mate-server.vercel.app/roommates/${params.id}`),
                 element: (<Privateroute>
                     <Update></Update>
                 </Privateroute>)
@@ -68,7 +68,6 @@ export const router = createBrowserRouter([
                     (<Privateroute>
                         <MyProfile></MyProfile>
                     </Privateroute>)
-
             },
         ]
     },
@@ -76,7 +75,7 @@ export const router = createBrowserRouter([
 
     {
         path: '/roommates/:id',
-        loader: ({ params }) => fetch(`https://roommateserver-production.up.railway.app/roommates/${params.id}`),
+        loader: ({ params }) => fetch(`https://room-mate-server.vercel.app/roommates/${params.id}`),
         element: (<Privateroute>
             <Details></Details>
         </Privateroute>)

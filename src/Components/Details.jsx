@@ -41,7 +41,7 @@ const Details = () => {
         setshowcontact(true)
 
 
-        fetch(`https://roommateserver-production.up.railway.app/roommates/${id}`, {
+        fetch(`https://room-mate-server.vercel.app/roommates/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ likes: newCount }),

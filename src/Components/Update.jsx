@@ -41,7 +41,7 @@ const Update = () => {
         // console.log(updatedata);
 
 
-        fetch(`https://roommateserver-production.up.railway.app/roommates/${_id}`, {
+        fetch(`https://room-mate-server.vercel.app/roommates/${_id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedata),
