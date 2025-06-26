@@ -1,6 +1,6 @@
 # 🏠 Roommate Finder Website
 
-A full-stack web application designed to help users find compatible roommates based on location, budget, lifestyle preferences, and interests. Users can sign up, create listings, search, and interact with roommate posts.
+A full-stack web application designed to help users find compatible roommates based on location, budget, lifestyle preferences, and interests. Users can sign up, create listings, search, and interact with (roommate posts).
 
 ### 🔗 Live Site
 
