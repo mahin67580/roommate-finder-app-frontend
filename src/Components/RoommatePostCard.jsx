@@ -1,29 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaMoneyBillWave, FaCalendarAlt, FaHeart } from 'react-icons/fa';
 
 const RoommatePostCard = ({ post }) => {
     const { _id, title, rent, location, likes, availability } = post;
     
     return (
-        <div>
-            <div className="  p-6 rounded-xl shadow-md border hover:shadow-lg transition duration-300">
-                <h2 className="text-xl font-bold mb-2 ">{title}</h2>
-                <p className=" "><strong>Location :</strong> {location}</p>
-                <p className="   "><strong>Rent :</strong> ${rent}</p>
-                <p className="   "><strong>Availability :</strong> <span className='p-2 rounded-2xl bg-green-400 '>{availability}</span></p>
-                <p className="  mb-4"><strong>LIkes :</strong><span className='text-blue-700 text-2xl'> {likes}</span> people liked this person</p>
-
-                <div className='text-center'>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+            className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 h-full"
+        >
+            <div className="card-body">
+                <h2 className="card-title text-xl   h-[100px] md:text-2xl font-bold text-primary">{title}</h2>
+                
+                <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                        <FaMapMarkerAlt className="text-secondary flex-shrink-0" />
+                        <span className="text-base-content">{location}</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                        <FaMoneyBillWave className="text-secondary flex-shrink-0" />
+                        <span className="text-base-content">${rent} per month</span>
+                    </div>
+                    
+                    <div className="flex items-center   gap-3">
+                        <FaCalendarAlt className="text-secondary flex-shrink-0" />
+                        <span className="badge badge-success gap-2 font-bold">
+                            {availability}
+                        </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                        <FaHeart className="text-secondary flex-shrink-0" />
+                        <span className="text-base-content">
+                            <span className="text-primary font-bold text-xl">{likes}</span> people interested
+                        </span>
+                    </div>
+                </div>
+                
+                <div className="card-actions justify-center mt-4">
                     <Link
                         to={`/roommates/${_id}`}
-                        className="inline-block mt-2 px-4 py-2 bg-blue-600   text-white rounded hover:bg-blue-700 transition"
+                        className="btn btn-primary w-full"
                     >
-                        See More
+                        View Details
                     </Link>
-
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,31 +1,27 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthContext';
 import { Tooltip as ReactTooltip } from "react-tooltip";
-
-
-
+import { FaHeart, FaMapMarkerAlt, FaMoneyBillWave, FaCalendarAlt, FaInfoCircle, FaUserClock, FaHome, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Details = () => {
-
     useEffect(() => {
-        document.title = 'Details';
+        document.title = 'Roommate Details';
         window.scrollTo(0, 0);
     }, []);
-    const post = useLoaderData()
-    const { user } = use(AuthContext)
+
+    const post = useLoaderData();
+    const { user } = React.useContext(AuthContext);
     const [count, setCount] = useState(post?.likes || 0);
-    const [showcontact, setshowcontact] = useState(false)
+    const [showContact, setShowContact] = useState(false);
     const { _id, title, rent, location, availability, contact, description, lifestyle, roomType, email } = post;
-
-
     const isOwner = user?.email === email;
 
     const handleLike = (id) => {
-
         if (isOwner) {
             Swal.fire({
                 icon: "error",
@@ -37,19 +33,14 @@ const Details = () => {
 
         const newCount = count + 1;
         setCount(newCount);
-
-        setshowcontact(true)
-
+        setShowContact(true);
 
         fetch(`https://room-mate-server.vercel.app/roommates/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ likes: newCount }),
         }).then(res => res.json()).then(data => {
-            // console.log("data from serverDB", data);
             if (data.acknowledged) {
-
-
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -57,44 +48,106 @@ const Details = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-
-
-
             }
-        })
+        });
+    };
 
-
-
-    }
-
+    const infoItems = [
+        { icon: <FaMapMarkerAlt />, label: "Location", value: location },
+        { icon: <FaMoneyBillWave />, label: "Rent", value: `$${rent}` },
+        { icon: <FaCalendarAlt />, label: "Availability", value: availability },
+        { icon: <FaInfoCircle />, label: "Description", value: description },
+        { icon: <FaUserClock />, label: "Lifestyle", value: lifestyle },
+        { icon: <FaHome />, label: "Room Type", value: roomType },
+        { icon: <FaEnvelope />, label: "Email", value: email },
+    ];
 
     return (
-        <div>
-            <Navbar></Navbar>
-            <div className="  m-6 text-center  p-6 rounded-xl shadow-md border hover:shadow-lg transition duration-300 w-11/12 mx-auto">
-                <p className='text-green-500 font-bold mb-4'><span className='text-2xl'>{count}</span> people interested in this person</p>
-                <h2 className="text-xl font-bold mb-4  ">{title}</h2>
-                <p className="  mb-4"><strong>Location:</strong> {location}</p>
-                <p className=" mb-4"><strong>Rent:</strong> $ {rent}</p>
-                <p className=" mb-4"><strong>availability:</strong> {availability}</p>
+        <div className="min-h-screen flex flex-col bg-base-100">
+            <Navbar />
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="flex-1 py-8 px-4 sm:px-6 lg:px-8"
+            >
+                <div className="  mx-auto">
+                    <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                    >
+                        <div className="card-body">
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                                <motion.h2 
+                                    initial={{ x: -20 }}
+                                    animate={{ x: 0 }}
+                                    className="text-2xl md:text-3xl font-bold text-primary"
+                                >
+                                    {title}
+                                </motion.h2>
+                                <div className="badge badge-primary badge-lg mt-2 md:mt-0">
+                                    {count} {count === 1 ? 'Like' : 'Likes'}
+                                </div>
+                            </div>
 
-                <p className=" mb-4"><strong>description:</strong> {description}</p>
-                <p className=" mb-4"><strong>lifestyle:</strong> {lifestyle}</p>
-                <p className=" mb-4"><strong>roomType:</strong> {roomType}</p>
-                <p className=" mb-4"><strong>email:</strong> {email}</p>
-                <button onClick={() => handleLike(_id)} className="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition mb-4" data-tooltip-id="my-tooltip-1">Like</button>
-                {
-                    showcontact && (<p className="text-gray-600  "><strong>contact:</strong> {contact}</p>)
-                }
-            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                {infoItems.map((item, index) => (
+                                    <motion.div 
+                                        key={index}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="flex items-start gap-4"
+                                    >
+                                        <div className="text-primary mt-1">
+                                            {item.icon}
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-base-content">{item.label}</h3>
+                                            <p className="text-base-content">{item.value}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
 
+                            {showContact && (
+                                <motion.div 
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="flex items-center gap-4 p-4 bg-primary bg-opacity-10 rounded-lg"
+                                >
+                                    <FaPhone className="text-primary text-xl" />
+                                    <div>
+                                        <h3 className="font-semibold text-base-content">Contact</h3>
+                                        <p className="text-base-content">{contact}</p>
+                                    </div>
+                                </motion.div>
+                            )}
 
-
-            <Footer></Footer>
+                            <div className="card-actions justify-center mt-6">
+                                <motion.button 
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => handleLike(_id)}
+                                    className="btn btn-primary gap-2"
+                                    disabled={isOwner}
+                                    data-tooltip-id="my-tooltip-1"
+                                >
+                                    <FaHeart />
+                                    Show Interest
+                                </motion.button>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </motion.div>
+            <Footer />
+            
             <ReactTooltip
                 id="my-tooltip-1"
                 place="bottom"
-                content="Press Like to Get Contact"
+                content="Press to show interest and view contact"
+                className="z-50"
             />
         </div>
     );

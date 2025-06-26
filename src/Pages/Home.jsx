@@ -4,6 +4,8 @@ import FeaturedRoommatePost from '../Components/FeaturedRoommatePost';
 import BannerText from '../Components/BannerText';
 import Countuoany from '../Components/Countuoany';
 import FAQAccordion from '../Components/FAQAccordion';
+import AboutUs from '../Components/AboutUs';
+import Contact from '../Components/Contact';
 
 const Home = () => {
     useEffect(() => {
@@ -11,19 +13,23 @@ const Home = () => {
         window.scrollTo(0, 0);
     }, []);
     return (
-        <div className='min-h-screen relative '>
+        <div className='min-h-screen '>
 
             <div>
                 <Banner></Banner>
             </div>
-            <div className=' absolute top-[90px] left-[42px] lg:top-[500px] lg:left-[160px] w-9/12 '>
-                <BannerText></BannerText>
-            </div>
+           
             <div className=' '>
                 <FeaturedRoommatePost></FeaturedRoommatePost>
             </div>
             <div>
                 <Countuoany></Countuoany>
+            </div>
+            <div>
+                <AboutUs></AboutUs>
+            </div>
+            <div>
+                <Contact></Contact>
             </div>
             <div className='mt-20'>
                 <FAQAccordion></FAQAccordion>

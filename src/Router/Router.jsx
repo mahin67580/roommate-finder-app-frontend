@@ -16,6 +16,8 @@ import AddRoommateForm from "../Pages/CURD/AddRoommateForm";
 import Details from "../Components/Details";
 import Errorpage from "../Components/Errorpage";
 import Update from "../Components/Update";
+import AboutUs from "../Components/AboutUs";
+import Contact from "../Components/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ export const router = createBrowserRouter([
                 element: <BrowseListing></BrowseListing>
             },
             {
+                path: '/AboutUs',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/contactUs',
+                element: <Contact></Contact>
+            },
+            {
                 path: '/MyListings',
                 // loader: () => fetch("https://room-mate-server.vercel.app/roommates"),
 
@@ -47,7 +57,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/Update/:id',
-                
+
                 loader: ({ params }) => fetch(`https://room-mate-server.vercel.app/roommates/${params.id}`),
                 element: (<Privateroute>
                     <Update></Update>

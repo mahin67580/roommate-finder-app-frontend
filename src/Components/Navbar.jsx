@@ -48,15 +48,17 @@ const Navbar = () => {
 
     const Links = <>
         <NavLink to={'/'} className={' btn    text-base-content mr-5 '}>Home</NavLink>
-        <NavLink to={'/AddToFindRoommate'} className={'btn     text-base-content mr-5'}>Add to Find Roommate</NavLink>
-        <NavLink to={'/BrowseListing'} className={'btn  text-base-content mr-5'}>Browse Listing</NavLink>
-        <NavLink to={'/MyListings'} className={'btn     text-base-content mr-5'}>My Listings</NavLink>
+        {/* <NavLink to={'/AddToFindRoommate'} className={'btn     text-base-content mr-5'}>Add to Find Roommate</NavLink> */}
+        <NavLink to={'/BrowseListing'} className={'btn  text-base-content mr-5'}>Browse All Listing</NavLink>
+        <NavLink to={'/AboutUs'} className={'btn  text-base-content mr-5'}>About us</NavLink>
+        <NavLink to={'/contactUs'} className={'btn  text-base-content mr-5'}>Contact us</NavLink>
+        {/* <NavLink to={'/MyListings'} className={'btn     text-base-content mr-5'}>My Listings</NavLink> */}
         {
             user ? (<NavLink to={'/myprofile'} className="btn     text-base-content mr-5 "> My profile </NavLink  >) : ''
         }
         <button
             onClick={toggleTheme}
-            className="btn btn-sm btn-primary ml-5 mt-1 " data-tooltip-id="my-tooltip-2"
+            className="btn btn-sm btn-primary   mt-1 " data-tooltip-id="my-tooltip-2"
         >
             Toggle {theme === 'light' ? '🌙' : '☀️'}
         </button>
