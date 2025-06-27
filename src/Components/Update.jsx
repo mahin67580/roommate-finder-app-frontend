@@ -57,7 +57,7 @@ const Update = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/MyListings')
+                navigate('/dashboard/my-listings')
 
 
             }

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import BrowseListingCard from './BrowseListingCard';
 import { motion } from 'framer-motion';
-import { FaSearch, FaFilter, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaTimes, FaSpinner } from 'react-icons/fa';
 
 const BrowseListing = () => {
     const allPosts = useLoaderData();
-    const [posts, setPosts] = useState(allPosts);
+    const [posts, setPosts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filters, setFilters] = useState({
         minRent: '',
@@ -14,33 +14,44 @@ const BrowseListing = () => {
         location: ''
     });
     const [showFilters, setShowFilters] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         document.title = 'Browse Roommate Listings';
         window.scrollTo(0, 0);
-    }, []);
+        
+        // Simulate loading delay (you can remove this if your data loads instantly)
+        const timer = setTimeout(() => {
+            setPosts(allPosts);
+            setIsLoading(false);
+        }, 500);
+        
+        return () => clearTimeout(timer);
+    }, [allPosts]);
 
     useEffect(() => {
-        // Filter posts based on search term and filters
-        const filteredPosts = allPosts.filter(post => {
-            // Search term matching (title or location)
-            const matchesSearch = searchTerm === '' || 
-                post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                post.location.toLowerCase().includes(searchTerm.toLowerCase());
+        if (!isLoading) {
+            // Filter posts based on search term and filters
+            const filteredPosts = allPosts.filter(post => {
+                // Search term matching (title or location)
+                const matchesSearch = searchTerm === '' || 
+                    post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    post.location.toLowerCase().includes(searchTerm.toLowerCase());
 
-            // Rent range filtering
-            const matchesMinRent = filters.minRent === '' || post.rent >= Number(filters.minRent);
-            const matchesMaxRent = filters.maxRent === '' || post.rent <= Number(filters.maxRent);
+                // Rent range filtering
+                const matchesMinRent = filters.minRent === '' || post.rent >= Number(filters.minRent);
+                const matchesMaxRent = filters.maxRent === '' || post.rent <= Number(filters.maxRent);
 
-            // Location filtering
-            const matchesLocation = filters.location === '' || 
-                post.location.toLowerCase().includes(filters.location.toLowerCase());
+                // Location filtering
+                const matchesLocation = filters.location === '' || 
+                    post.location.toLowerCase().includes(filters.location.toLowerCase());
 
-            return matchesSearch && matchesMinRent && matchesMaxRent && matchesLocation;
-        });
+                return matchesSearch && matchesMinRent && matchesMaxRent && matchesLocation;
+            });
 
-        setPosts(filteredPosts);
-    }, [searchTerm, filters, allPosts]);
+            setPosts(filteredPosts);
+        }
+    }, [searchTerm, filters, allPosts, isLoading]);
 
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
@@ -58,6 +69,21 @@ const BrowseListing = () => {
         });
         setSearchTerm('');
     };
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-base-100 flex items-center justify-center">
+                {/* <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="text-primary text-4xl"
+                >
+                    <FaSpinner />
+                </motion.div> */}
+                <p className="ml-4 text-lg">Loading listings...</p>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-base-100 py-12 px-4 sm:px-6 lg:px-8">

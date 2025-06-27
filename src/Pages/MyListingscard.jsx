@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
@@ -6,13 +5,7 @@ import Swal from 'sweetalert2';
 const MyListingscard = ({ useraddedpost, reload }) => {
     const { _id, title, location, rent } = useraddedpost;
 
-
-
-
-
-
     const handleDelete = (id) => {
-
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,65 +16,46 @@ const MyListingscard = ({ useraddedpost, reload }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://room-mate-server.vercel.app/roommates/${id}`, { method: "DELETE" }).then(res => res.json()).then(data => {
+                fetch(`https://room-mate-server.vercel.app/roommates/${id}`, { 
+                    method: "DELETE" 
+                })
+                .then(res => res.json())
+                .then(data => {
                     if (data.deletedCount) {
-                        reload()
+                        reload();
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Your listing has been deleted.",
                             icon: "success"
                         });
                     }
-                })
+                });
             }
         });
-
-
     };
 
-
-
-
-
-
-
-
-
-
     return (
-        <>
-
-
-
-            <tr className="text-center border-b  ">
-                <td className="py-2 px-4">{title}</td>
-                <td className="py-2 px-4">{location}</td>
-                <td className="py-2 px-4"> $ {rent}</td>
-                <td className="py-2 px-4 flex justify-center items-center">
-
-
-                    <Link to={`/Update/${_id}`}><button className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2">
+        <tr className="hover:bg-base-300 transition-colors">
+            <td className="py-3 px-4">{title}</td>
+            <td className="py-3 px-4">{location}</td>
+            <td className="py-3 px-4">${rent}</td>
+            <td className="py-3 px-4">
+                <div className="flex gap-2">
+                    <Link 
+                        to={`/Update/${_id}`} 
+                        className="btn btn-warning btn-sm"
+                    >
                         Update
-                    </button></Link>
-
-
-
+                    </Link>
                     <button
                         onClick={() => handleDelete(_id)}
-                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                        className="btn btn-error btn-sm"
                     >
                         Delete
                     </button>
-                </td>
-
-
-            </tr>
-
-
-
-
-        </>
-
+                </div>
+            </td>
+        </tr>
     );
 };
 

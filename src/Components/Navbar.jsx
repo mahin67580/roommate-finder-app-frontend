@@ -54,8 +54,12 @@ const Navbar = () => {
         <NavLink to={'/contactUs'} className={'btn  text-base-content mr-5'}>Contact us</NavLink>
         {/* <NavLink to={'/MyListings'} className={'btn     text-base-content mr-5'}>My Listings</NavLink> */}
         {
-            user ? (<NavLink to={'/myprofile'} className="btn     text-base-content mr-5 "> My profile </NavLink  >) : ''
+            user ? (<NavLink to={'/dashboard'} className="btn text-base-content mr-5 "> Dashboard </NavLink  >) : ''
         }
+
+        {/* {
+            user ? (<NavLink to={'/myprofile'} className="btn     text-base-content mr-5 "> My profile </NavLink  >) : ''
+        } */}
         <button
             onClick={toggleTheme}
             className="btn btn-sm btn-primary   mt-1 " data-tooltip-id="my-tooltip-2"

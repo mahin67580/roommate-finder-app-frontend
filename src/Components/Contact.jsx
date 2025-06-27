@@ -239,7 +239,7 @@ const Contact = () => {
                   </div>
 
                   <div className="form-control mt-6">
-                    <motion.button
+                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
@@ -247,7 +247,8 @@ const Contact = () => {
                     >
                       <FaPaperPlane className="mr-2" />
                       Send Message
-                    </motion.button>
+                    </motion.button>     
+
                   </div>
                 </form>
               )}

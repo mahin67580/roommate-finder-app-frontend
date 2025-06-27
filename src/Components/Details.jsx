@@ -64,7 +64,7 @@ const Details = () => {
 
     return (
         <div className="min-h-screen flex flex-col bg-base-100">
-            <Navbar />
+            
             <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -141,7 +141,7 @@ const Details = () => {
                     </motion.div>
                 </div>
             </motion.div>
-            <Footer />
+             
             
             <ReactTooltip
                 id="my-tooltip-1"
