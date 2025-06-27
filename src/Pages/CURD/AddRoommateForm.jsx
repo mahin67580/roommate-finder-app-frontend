@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 export default function AddRoommateForm() {
     const { user } = use(AuthContext);
     const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         document.title = 'Add Roommate Listing';
@@ -32,6 +33,8 @@ export default function AddRoommateForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        
         fetch("https://room-mate-server.vercel.app/roommates", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -60,6 +63,17 @@ export default function AddRoommateForm() {
                 });
                 navigate("/dashboard/my-listings");
             }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Submission Failed",
+                text: "There was an error saving your listing. Please try again.",
+            });
+        })
+        .finally(() => {
+            setIsSubmitting(false);
         });
     };
 
@@ -67,7 +81,8 @@ export default function AddRoommateForm() {
         <SpinnerLoader>
             <div className="container mx-auto px-4 py-8">
                 <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-base-200 rounded-xl shadow-md p-4 md:p-6 space-y-4">
-                    <h2 className="text-2xl font-bold text-center">Add a Roommate Listing</h2>
+      
+                     <h2 className="text-2xl font-bold text-center">Add a Roommate Listing</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="form-control">
@@ -224,8 +239,19 @@ export default function AddRoommateForm() {
                     <button 
                         type="submit" 
                         className="btn btn-primary w-full mt-4"
+                        disabled={isSubmitting}
                     >
-                        Add Listing
+                        {isSubmitting ? (
+                            <span className="flex items-center justify-center">
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Processing...
+                            </span>
+                        ) : (
+                            "Add Listing"
+                        )}
                     </button>
                 </form>
             </div>
