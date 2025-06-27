@@ -20,7 +20,7 @@ const RoommatePostCard = ({ post }) => {
                 
                 <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                        <FaMapMarkerAlt className="text-secondary flex-shrink-0" />
+                        <FaMapMarkerAlt className="text-secondary  flex-shrink-0" />
                         <span className="text-base-content">{location}</span>
                     </div>
                     

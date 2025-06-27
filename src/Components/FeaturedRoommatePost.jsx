@@ -47,13 +47,13 @@ const FeaturedRoommatePost = () => {
     if (loading) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[300px]">
-                <motion.div
+                {/* <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     className="text-primary text-4xl mb-4"
                 >
                     <FaSpinner />
-                </motion.div>
+                </motion.div> */}
                 <p className="text-lg text-base-content">Finding the best roommates for you...</p>
             </div>
         );

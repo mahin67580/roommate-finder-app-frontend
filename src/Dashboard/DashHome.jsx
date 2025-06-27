@@ -14,6 +14,8 @@ const DashHome = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        document.title = 'Overview';
+        window.scrollTo(0, 0);
         const fetchData = async () => {
             try {
                 const response = await fetch("https://room-mate-server.vercel.app/roommates");
@@ -23,7 +25,7 @@ const DashHome = () => {
                 const totalListings = data.length;
                 const activeListings = data.filter(listing => listing.availability === "available").length;
                 const totalLikes = data.reduce((sum, listing) => sum + (listing.likes || 0), 0);
-                const averageRent = data.length > 0 
+                const averageRent = data.length > 0
                     ? Math.round(data.reduce((sum, listing) => sum + Number(listing.rent), 0) / data.length)
                     : 0;
 
@@ -69,7 +71,7 @@ const DashHome = () => {
     return (
         <div className="space-y-8">
             <h1 className="text-3xl font-bold">Dashboard Overview</h1>
-            
+
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="card bg-base-200 shadow-sm">
@@ -155,29 +157,29 @@ const DashHome = () => {
                 <div className="card bg-base-200 shadow-sm p-4">
                     <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Link 
-                            to="/dashboard/myprofile" 
+                        <Link
+                            to="/dashboard/myprofile"
                             className="btn btn-primary gap-2"
                         >
                             <FaUser />
                             My Profile
                         </Link>
-                        <Link 
-                            to="/dashboard/add-listing" 
+                        <Link
+                            to="/dashboard/add-listing"
                             className="btn btn-secondary gap-2"
                         >
                             <FaPlus />
                             Add Listing
                         </Link>
-                        <Link 
-                            to="/dashboard/my-listings" 
+                        <Link
+                            to="/dashboard/my-listings"
                             className="btn btn-accent gap-2"
                         >
                             <FaList />
                             My Listings
                         </Link>
-                        <Link 
-                            to="/dashboard" 
+                        <Link
+                            to="/dashboard"
                             className="btn btn-info gap-2"
                         >
                             <FaHome />

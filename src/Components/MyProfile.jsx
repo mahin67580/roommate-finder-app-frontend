@@ -38,9 +38,9 @@ const MyProfile = () => {
 
     return (
         <SpinnerLoader>
-            <div className="container mx-auto px-4 py-8">
+            <div className="container   mx-auto px-4 py-8">
                 {/* Profile Card */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col lg:flex-row justify-center lg:gap-20 items-center">
                     <div className="w-full max-w-md bg-base-200 rounded-xl shadow-md p-6 mb-8">
                         <div className="flex flex-col items-center">
                             <img 
